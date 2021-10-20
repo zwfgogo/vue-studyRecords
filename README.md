@@ -24,19 +24,19 @@ Vue 的这个特点使得开发者不再需要考虑此类优化，从而能够�
 React中渲染功能都依靠JSX。
 Vue也支持JSX，但是默认推荐还是模板。
 
-2.
-`<div id="app-2">`
-  `<span v-bind:title="message">`
-    鼠标悬停几秒钟查看此处动态绑定的提示信息！
- `</span>`
-`</div>`
-
-let app2 = new Vue({
-  el: '#app-2',
-  data: {
-    message: '页面加载于 ' + new Date().toLocaleString()
-  }
-})
+2.  
+`<div id="app-2">`  
+  `<span v-bind:title="message">`  
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！  
+ `</span>`  
+`</div>`  
+  
+let app2 = new Vue({  
+  el: '#app-2',  
+  data: {  
+    message: '页面加载于 ' + new Date().toLocaleString()  
+  }  
+})  
 
 v-bind:title 相当于绑定元素的title属性, 也可以写作`<span :title="message">`
 （将这个元素节点的 title attribute 和 Vue 实例的 message property 保持一致）
@@ -83,11 +83,11 @@ computed 计算属性的结果会被缓存，除非依赖的响应式 property �
 6.指令：
 一、v-text 更新元素的textContent
 
-示例：
-
-`<span v-text="msg"></span>`
-<!-- 和下面的一样 -->
-`<span>{{msg}}</span>`
+示例：  
+  
+`<span v-text="msg"></span>`  
+<!-- 和下面的一样 -->  
+`<span>{{msg}}</span>`  
 
 二、v-html 更新元素的innerHTML
 
@@ -100,10 +100,10 @@ computed 计算属性的结果会被缓存，除非依赖的响应式 property �
 五、v-else 限制：前一兄弟元素必须有 v-if 或 v-else-if。
 
 六、v-for 基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名：
-
-`<div v-for="item in items">`
-  {{ item.text }}
-`</div>`
+  
+`<div v-for="item in items">`  
+  {{ item.text }}  
+`</div>`  
 
 七、v-on 可以绑定一些事件的监听
 
@@ -141,33 +141,33 @@ Vue规范
 3.基础组件名：应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 Base、App 或 V。
 4.紧密耦合的组件名：和父组件紧密耦合的子组件应该以父组件名作为前缀命名。
 比如：
-components/
-|- TodoList.vue
-|- TodoListItem.vue
-|- TodoListItemButton.vue
+components/  
+|- TodoList.vue  
+|- TodoListItem.vue  
+|- TodoListItemButton.vue  
 5.组件名中的单词顺序：组件名应该以高级别的 (通常是一般化描述的) 单词开头，以描述性的修饰词结尾。
 动词—组件类型-描述性的修饰词
 比如：
-components/
-|- SearchButtonClear.vue
-|- SearchButtonRun.vue
-|- SearchInputQuery.vue
-|- SearchInputExcludeGlob.vue
-|- SettingsCheckboxTerms.vue
-|- SettingsCheckboxLaunchOnStartup.vue
+components/  
+|- SearchButtonClear.vue  
+|- SearchButtonRun.vue  
+|- SearchInputQuery.vue  
+|- SearchInputExcludeGlob.vue   
+|- SettingsCheckboxTerms.vue  
+|- SettingsCheckboxLaunchOnStartup.vue  
 6.自闭合组件：在单文件组件、字符串模板和 JSX 中没有内容的组件应该是自闭合的——但在 DOM 模板里永远不要这样做。
 7.组件名倾向完整单词而不是缩写。
 8.Prop 名大小写：在声明 prop 的时候，其命名应该始终使用 camelCase，而在模板和 JSX 中应该始终使用 kebab-case。
-比如：
+比如：  
 props: {
   greetingText: String
 }
-`<WelcomeMessage greeting-text="hi"/>`
+`<WelcomeMessage greeting-text="hi"/>`  
 9.多个 attribute 的元素应该分多行撰写，每个 attribute 一行。
-比如：
-`<MyComponent`
-`  foo="a"`
-`  bar="b"`
-`  baz="c"`
-`/>`
+比如：  
+`<MyComponent`  
+`  foo="a"`  
+`  bar="b"`  
+`  baz="c"`  
+`/>`  
 10.指令缩写 (用 : 表示 v-bind:、用 @ 表示 v-on: 和用 # 表示 v-slot:) 应该要么都用要么都不用。
