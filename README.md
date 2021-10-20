@@ -25,11 +25,11 @@ React中渲染功能都依靠JSX。
 Vue也支持JSX，但是默认推荐还是模板。
 
 2.
-<div id="app-2">
-  <span v-bind:title="message">
+`<div id="app-2">`
+  `<span v-bind:title="message">`
     鼠标悬停几秒钟查看此处动态绑定的提示信息！
-  </span>
-</div>
+ `</span>`
+`</div>`
 
 let app2 = new Vue({
   el: '#app-2',
@@ -38,7 +38,7 @@ let app2 = new Vue({
   }
 })
 
-v-bind:title 相当于绑定元素的title属性, 也可以写作<span :title="message">
+v-bind:title 相当于绑定元素的title属性, 也可以写作`<span :title="message">`
 （将这个元素节点的 title attribute 和 Vue 实例的 message property 保持一致）
 
 
@@ -85,9 +85,9 @@ computed 计算属性的结果会被缓存，除非依赖的响应式 property �
 
 示例：
 
-<span v-text="msg"></span>
+`<span v-text="msg"></span>`
 <!-- 和下面的一样 -->
-<span>{{msg}}</span>
+`<span>{{msg}}</span>`
 
 二、v-html 更新元素的innerHTML
 
@@ -95,15 +95,15 @@ computed 计算属性的结果会被缓存，除非依赖的响应式 property �
 
 三、v-show 根据表达式之真假值，切换元素的 display CSS property。
 
-四、v-if 根据表达式的值的 truthiness 来有条件地渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建。如果元素是 <template>，将提出它的内容作为条件块。
+四、v-if 根据表达式的值的 truthiness 来有条件地渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建。如果元素是 `<template>`，将提出它的内容作为条件块。
 
 五、v-else 限制：前一兄弟元素必须有 v-if 或 v-else-if。
 
 六、v-for 基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名：
 
-<div v-for="item in items">
+`<div v-for="item in items">`
   {{ item.text }}
-</div>
+`</div>`
 
 七、v-on 可以绑定一些事件的监听
 
@@ -111,10 +111,7 @@ computed 计算属性的结果会被缓存，除非依赖的响应式 property �
 
 九、v-model 限制：
 
-<input>
-<select>
-<textarea>
-components
+`<input>、<select>、<textarea>、components`
 
 十、v-slot
 
@@ -123,22 +120,23 @@ components
 7.用 v-for 时加上 key 用来辨识虚拟DOM的节点 减少能耗。
 
 
------------------------------------------------------------------------------------------------------------------
+****
+`=======================================================================================  `  
 
 Vue规范
 
 优先级A：
-1.组件名应为多个单词，内置组件除外。可以避免以后的名字重复。
-2.组件的 data 必须是一个函数。
-3.prop 的定义应该尽量详细。至少需要指定类型。
-4.为 v-for 设置 key 值。
-5.避免 v-for 与 v-if 同时用在同一个元素上， （为了过滤一个列表中的项目，为了避免渲染本应该被隐藏的列表）
-要么把if移动至容器元素上，要么先过滤列表之后再遍历过滤完的列表。
-6.为组件样式设置作用域。 scoped要慎用，scoped可以为当前的文件添加唯一性，会使引用此组件的组件很难去修改添加了scoped属性的组件的样式，所以如果组件的样式已经满足了所有情况且基本不需要修改才应加上scoped。所以不一定要使用 scoped attribute。设置作用域也可以通过 CSS Modules，那是一个基于 class 的类似 BEM 的策略，当然你也可以使用其它的库或约定。
-7.私有 property 名，使用模块作用域保持不允许外部访问的函数的私有性。
+1.组件名应为多个单词，内置组件除外。可以避免以后的名字重复。  
+2.组件的 data 必须是一个函数。  
+3.prop 的定义应该尽量详细。至少需要指定类型。  
+4.为 v-for 设置 key 值。  
+5.避免 v-for 与 v-if 同时用在同一个元素上， （为了过滤一个列表中的项目，为了避免渲染本应该被隐藏的列表）  
+要么把if移动至容器元素上，要么先过滤列表之后再遍历过滤完的列表。  
+6.为组件样式设置作用域。 scoped要慎用，scoped可以为当前的文件添加唯一性，会使引用此组件的组件很难去修改添加了scoped属性的组件的样式，所以如果组件的样式已经满足了所有情况且基本不需要修改才应加上scoped。所以不一定要使用 scoped attribute。设置作用域也可以通过 CSS Modules，那是一个基于 class 的类似 BEM 的策略，当然你也可以使用其它的库或约定。  
+7.私有 property 名，使用模块作用域保持不允许外部访问的函数的私有性。  
 
-优先级B：强烈推荐 (增强可读性)
-1.组件文件：只要有能够拼接文件的构建系统，就把每个组件单独分成文件。
+优先级B：强烈推荐 (增强可读性)  
+1.组件文件：只要有能够拼接文件的构建系统，就把每个组件单独分成文件。  
 2.单文件组件的文件名应该要么始终是单词大写开头 (PascalCase)，要么始终是横线连接 (kebab-case)。
 3.基础组件名：应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 Base、App 或 V。
 4.紧密耦合的组件名：和父组件紧密耦合的子组件应该以父组件名作为前缀命名。
@@ -164,12 +162,12 @@ components/
 props: {
   greetingText: String
 }
-<WelcomeMessage greeting-text="hi"/>
+`<WelcomeMessage greeting-text="hi"/>`
 9.多个 attribute 的元素应该分多行撰写，每个 attribute 一行。
 比如：
-<MyComponent
-  foo="a"
-  bar="b"
-  baz="c"
-/>
+`<MyComponent`
+`  foo="a"`
+`  bar="b"`
+`  baz="c"`
+`/>`
 10.指令缩写 (用 : 表示 v-bind:、用 @ 表示 v-on: 和用 # 表示 v-slot:) 应该要么都用要么都不用。
