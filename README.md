@@ -67,5 +67,57 @@ props、propsData、methods、watch
 
 computed 计算属性的结果会被缓存，除非依赖的响应式 property 变化才会重新计算
 
-4.DOM
-el
+4.生命周期钩子 mounted渲染完之后调用
+
+5.实例方法/事件：
+1.on监听 emit触发
+2.once 监听一个自定义事件，只触发一次。
+3.off移除自定义事件监听器
+
+  如果没有提供参数，则移除所有的事件监听器；
+
+  如果只提供了事件，则移除该事件所有的监听器；
+
+  如果同时提供了事件与回调，则只移除这个回调的监听器。
+
+6.指令：
+一、v-text 更新元素的textContent
+
+示例：
+
+<span v-text="msg"></span>
+<!-- 和下面的一样 -->
+<span>{{msg}}</span>
+
+二、v-html 更新元素的innerHTML
+
+在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 XSS 攻击(??)。只在可信内容上使用 v-html，永不用在用户提交的内容上。
+
+三、v-show 根据表达式之真假值，切换元素的 display CSS property。
+
+四、v-if 根据表达式的值的 truthiness 来有条件地渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建。如果元素是 <template>，将提出它的内容作为条件块。
+
+五、v-else 限制：前一兄弟元素必须有 v-if 或 v-else-if。
+
+六、v-for 基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名：
+
+<div v-for="item in items">
+  {{ item.text }}
+</div>
+
+七、v-on 可以绑定一些事件的监听
+
+八、v-bind 动态地绑定一个或多个 attribute，或一个组件 prop 的表达式。
+
+九、v-model 限制：
+
+<input>
+<select>
+<textarea>
+components
+
+十、v-slot
+
+十一、v-pre 跳过这个元素和它的子元素的编译过程。可以用来显示原始 Mustache 标签。跳过大量没有指令的节点会加快编译。
+
+7.用 v-for 时加上 key 用来辨识虚拟DOM的节点 减少能耗。
